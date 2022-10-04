@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>93548267324-emihsmcbvgtcj5499cs5me7so37ua61b.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.93548267324-emihsmcbvgtcj5499cs5me7so37ua61b</string>
+	<key>API_KEY</key>
+	<string>AIzaSyAOzjJ1BRVl0_KyT6dIJ0e3Z3aTESvI0Nk</string>
+	<key>GCM_SENDER_ID</key>
+	<string>93548267324</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>net.codeveer.ssipHackathon2022</string>
+	<key>PROJECT_ID</key>
+	<string>ssip-hackathon2022</string>
+	<key>STORAGE_BUCKET</key>
+	<string>ssip-hackathon2022.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:93548267324:ios:b148048756aa342bc60039</string>
+</dict>
+</plist>

@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "93548267324",
+    "project_id": "ssip-hackathon2022",
+    "storage_bucket": "ssip-hackathon2022.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:93548267324:android:20bed5b45fc529d1c60039",
+        "android_client_info": {
+          "package_name": "net.codeveer.ssip_hackathon_2022"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "93548267324-rbouorpq20dtfqrbost9ra03fj7ftldd.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBO5jDtig1l-ygKcPMTpBCdhlM0540Q0vg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "93548267324-rbouorpq20dtfqrbost9ra03fj7ftldd.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
