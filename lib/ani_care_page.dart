@@ -1,16 +1,30 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:ssip_hackathon_2022/models/CasesModel.dart';
 import 'package:velocity_x/velocity_x.dart';
 
-class AniCarePage extends StatelessWidget {
+int curr_index = 0;
+
+class AniCarePage extends StatefulWidget {
   const AniCarePage({super.key});
   static List<Case_model> allcases = [];
+
+  @override
+  State<AniCarePage> createState() => _AniCarePageState();
+}
+
+List<Case_model> calendarcases = [];
+DateTime date = DateTime.now();
+
+class _AniCarePageState extends State<AniCarePage> {
   @override
   Widget build(BuildContext context) {
+    calendarcases = [];
+    calendarcases.addAll(AniCarePage.allcases);
+    calendarcases.retainWhere((element) => element.date.day == date.day);
     return Scaffold(
-      // backgroundColor: Colors.white,
       drawer: Drawer(),
       appBar: AppBar(
         iconTheme: IconThemeData(color: Colors.black),
@@ -34,85 +48,156 @@ class AniCarePage extends StatelessWidget {
         ),
       ),
       body: SingleChildScrollView(
-        child: Center(
-          child: Column(
-            children: [
-              Column(
+        child: curr_index == 2
+            ? Column(
                 children: [
-                  Text("Past Case"),
-                  Image.network(
-                    "https://cdn1.iconfinder.com/data/icons/calendar-20/200/calendar_23-512.png",
-                    width: MediaQuery.of(context).size.width * 0.3,
-                  )
+                  IconButton(
+                      onPressed: () async {
+                        var data = await showDatePicker(
+                            context: context,
+                            initialDate: date,
+                            firstDate: DateTime.utc(2000),
+                            lastDate: DateTime.now());
+                        if (data != null) date = data as DateTime;
+                        setState(() {});
+                      },
+                      icon: Icon(Icons.calendar_today)),
+                  calendarcases.length > 0
+                      ? ListView.builder(
+                          itemCount: calendarcases.length,
+                          itemBuilder: (context, index) {
+                            return Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    calendarcases[index]
+                                        .animal
+                                        .text
+                                        .color(Colors.black)
+                                        .make(),
+                                    calendarcases[index]
+                                        .Doctor
+                                        .text
+                                        .color(Colors.black)
+                                        .make(),
+                                    calendarcases[index]
+                                        .desies
+                                        .text
+                                        .color(Colors.black)
+                                        .make(),
+                                  ],
+                                ).p16(),
+                                Text("${date.day}/${date.month}/${date.year}")
+                                    .p16()
+                              ],
+                            )
+                                .box
+                                .color(Colors.lightBlueAccent)
+                                .roundedSM
+                                .make()
+                                .p4();
+                          }).expand()
+                      : Center(child: Text("No Cases on selected Date"))
                 ],
-              )
-                  .wThreeForth(context)
-                  .box
-                  .color(Colors.lightGreen)
-                  .roundedLg
-                  .make()
-                  .p4()
-                  .onTap(() {
-                Navigator.pushNamed(context, "/past_cases");
-              }),
-              Column(
-                children: [
-                  Text("Current Case"),
-                  Image.network(
-                    "https://cdn1.iconfinder.com/data/icons/calendar-20/200/calendar_23-512.png",
-                    width: MediaQuery.of(context).size.width * 0.3,
-                  )
-                ],
-              )
-                  .wThreeForth(context)
-                  .box
-                  .color(Colors.lightGreen)
-                  .roundedLg
-                  .make()
-                  .p4()
-                  .onTap(() {
-                Navigator.pushNamed(context, "/current_cases");
-              }),
-              Column(
-                children: [
-                  Text("Add a new Case"),
-                  Image.network(
-                    "https://cdn1.iconfinder.com/data/icons/calendar-20/200/calendar_23-512.png",
-                    width: MediaQuery.of(context).size.width * 0.3,
-                  )
-                ],
-              )
-                  .wThreeForth(context)
-                  .box
-                  .color(Colors.lightGreen)
-                  .roundedLg
-                  .make()
-                  .p4()
-                  .onTap(() {
-                Navigator.pushNamed(context, "/add_case");
-              }),
-              Column(
-                children: [
-                  Text("see cases by calendar"),
-                  Image.network(
-                    "https://cdn1.iconfinder.com/data/icons/calendar-20/200/calendar_23-512.png",
-                    width: MediaQuery.of(context).size.width * 0.3,
-                  )
-                ],
-              )
-                  .wThreeForth(context)
-                  .box
-                  .color(Colors.lightGreen)
-                  .roundedLg
-                  .make()
-                  .p4()
-                  .onTap(() {
-                Navigator.pushNamed(context, "/calendar_case");
-              }),
-            ],
-          ),
-        ),
+              ).hThreeForth(context)
+            : curr_index == 1
+                ? Container()
+                : curr_index == 3
+                    ? Center(
+                        child: Column(
+                          children: [
+                            ElevatedButton(
+                                onPressed: () {}, child: Text("Log Out")),
+                          ],
+                        ),
+                      )
+                    : Center(
+                        child: Column(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Column(
+                            children: [
+                              "Past Case".text.scale(2).bold.make(),
+                              Image.asset(
+                                "Assets/Images/done.jpg",
+                                width: MediaQuery.of(context).size.width * 0.3,
+                              ).p12()
+                            ],
+                          )
+                              .p8()
+                              .wThreeForth(context)
+                              .box
+                              .color(Colors.lightGreen)
+                              .roundedLg
+                              .make()
+                              .p4()
+                              .onTap(() {
+                            Navigator.pushNamed(context, "/past_cases");
+                          }).p4(),
+                          Column(
+                            children: [
+                              "Current Case".text.scale(2).bold.make(),
+                              Image.asset(
+                                "Assets/Images/suitcase.jpeg",
+                                width: MediaQuery.of(context).size.width * 0.25,
+                              ).p12()
+                            ],
+                          )
+                              .p8()
+                              .wThreeForth(context)
+                              .box
+                              .color(Colors.lightGreen)
+                              .roundedLg
+                              .make()
+                              .p4()
+                              .onTap(() {
+                            Navigator.pushNamed(context, "/current_cases");
+                          }).p4(),
+                          Column(
+                            children: [
+                              "Add a new Case".text.scale(2).bold.make(),
+                              Image.asset(
+                                "Assets/Images/add cases.jpeg",
+                                width: MediaQuery.of(context).size.width * 0.2,
+                              ).p12()
+                            ],
+                          )
+                              .p8()
+                              .wThreeForth(context)
+                              .box
+                              .color(Colors.lightGreen)
+                              .roundedLg
+                              .make()
+                              .p4()
+                              .onTap(() {
+                            Navigator.pushNamed(context, "/add_case");
+                          }).p4(),
+                        ],
+                      ).hThreeForth(context)),
       ),
+      bottomNavigationBar: BottomNavigationBar(
+          unselectedItemColor: Colors.green,
+          selectedItemColor: Colors.lightBlue,
+          currentIndex: curr_index,
+          onTap: (value) {
+            curr_index = value;
+            setState(() {});
+          },
+          items: const [
+            BottomNavigationBarItem(
+                icon: Icon(
+                  Icons.home,
+                ),
+                label: "Home"),
+            BottomNavigationBarItem(
+                icon: Icon(Icons.location_on), label: "Location"),
+            BottomNavigationBarItem(
+                icon: Icon(Icons.calendar_month), label: "Calendar"),
+            BottomNavigationBarItem(
+                icon: Icon(Icons.account_circle_rounded), label: "Account")
+          ]),
     );
   }
 }
