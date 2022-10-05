@@ -43,12 +43,13 @@ class _AniCarePageState extends State<AniCarePage> {
     var _recv = records.docs
         .map(
           (element) => Case_model(
+              id: element.id,
               animal: element["animal"],
               disease: element["disease"],
               Doctor: element["Doctor"],
               date: DateTime.now(),
               place: element["place"],
-              completed: false),
+              completed: element["completed"]),
         )
         .toList();
     setState(() {

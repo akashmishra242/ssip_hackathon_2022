@@ -72,13 +72,14 @@ class _AddCasePageState extends State<AddCasePage> {
                   ElevatedButton(
                           onPressed: () {
                             if (_formkey.currentState!.validate()) {
-                              AniCarePage.allcases.add(Case_model(
-                                  animal: animal,
-                                  disease: disease,
-                                  Doctor: doctor,
-                                  date: DateTime.now(),
-                                  place: place,
-                                  completed: false));
+                              // AniCarePage.allcases.add(Case_model(
+                              //   id:"id",
+                              //     animal: animal,
+                              //     disease: disease,
+                              //     Doctor: doctor,
+                              //     date: DateTime.now(),
+                              //     place: place,
+                              //     completed: false));
                               addCase(animal, disease, doctor, DateTime.now(),
                                   place, false);
                               Navigator.of(context).pop();
@@ -96,6 +97,7 @@ class _AddCasePageState extends State<AddCasePage> {
   addCase(String animal, String disease, String doctor, var date, String place,
       bool completed) {
     var _cases = Case_model(
+        id: "id",
         animal: animal,
         disease: disease,
         Doctor: doctor,

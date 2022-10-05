@@ -12,6 +12,7 @@ String caseModelToJson(List<Case_model> data) =>
 
 class Case_model {
   Case_model({
+    required this.id,
     required this.animal,
     required this.disease,
     required this.Doctor,
@@ -19,7 +20,7 @@ class Case_model {
     required this.place,
     required this.completed,
   });
-
+  String? id;
   String animal;
   String disease;
   String Doctor;
@@ -28,6 +29,7 @@ class Case_model {
   bool completed;
 
   factory Case_model.fromJson(Map<String, dynamic> json) => Case_model(
+        id: json["id"],
         animal: json["animal"],
         disease: json["disease"],
         Doctor: json["Doctor"],
@@ -37,6 +39,7 @@ class Case_model {
       );
 
   Map<String, dynamic> toJson() => {
+        "id": id,
         "animal": animal,
         "disease": disease,
         "Doctor": Doctor,

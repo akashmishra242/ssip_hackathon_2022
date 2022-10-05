@@ -68,6 +68,14 @@ class _CurrentCasesPageState extends State<CurrentCasesPage> {
                                     actions: [
                                       ElevatedButton(
                                           onPressed: () {
+                                            setCase(
+                                                currentcases[index].id ?? '',
+                                                currentcases[index].animal,
+                                                currentcases[index].disease,
+                                                currentcases[index].Doctor,
+                                                currentcases[index].date,
+                                                currentcases[index].place,
+                                                true);
                                             AniCarePage.allcases[index]
                                                 .completed = true;
                                             Navigator.of(context).pop();
@@ -91,15 +99,23 @@ class _CurrentCasesPageState extends State<CurrentCasesPage> {
             }));
   }
 
-  addCase(String animal, String disease, String doctor, var date, String place,
-      bool completed) {
+  setCase(String id, String animal, String disease, String doctor, var date,
+      String place, bool completed) {
     var _cases = Case_model(
+        id: id,
         animal: animal,
         disease: disease,
         Doctor: doctor,
         date: date,
         place: place,
         completed: completed);
-    FirebaseFirestore.instance.collection('new_cases').add(_cases.toJson());
+    FirebaseFirestore.instance
+        .collection('new_cases')
+        .doc(id)
+        .set(_cases.toJson());
+  }
+
+  deletecase(var id) {
+    FirebaseFirestore.instance.collection('new_cases').doc(id).delete();
   }
 }
