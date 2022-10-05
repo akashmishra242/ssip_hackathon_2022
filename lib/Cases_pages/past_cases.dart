@@ -32,7 +32,7 @@ class _PastCasesPageState extends State<PastCasesPage> {
                     children: [
                       pastcases[index].animal.text.color(Colors.black).make(),
                       pastcases[index].Doctor.text.color(Colors.black).make(),
-                      pastcases[index].desies.text.color(Colors.black).make(),
+                      pastcases[index].disease.text.color(Colors.black).make(),
                     ],
                   ).p16(),
                   IconButton(

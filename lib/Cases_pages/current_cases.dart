@@ -24,7 +24,7 @@ class CurrentCasesPage extends StatelessWidget {
                 children: [
                   currentcases[index].animal.text.color(Colors.black).make(),
                   currentcases[index].Doctor.text.color(Colors.black).make(),
-                  currentcases[index].desies.text.color(Colors.black).make(),
+                  currentcases[index].disease.text.color(Colors.black).make(),
                 ],
               ).box.color(Colors.lightBlueAccent).roundedSM.make().p4();
             }));

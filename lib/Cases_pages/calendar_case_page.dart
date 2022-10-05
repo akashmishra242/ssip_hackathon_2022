@@ -43,7 +43,7 @@ class _CalendarCasePageState extends State<CalendarCasePage> {
                 children: [
                   calendarcases[index].animal.text.color(Colors.black).make(),
                   calendarcases[index].Doctor.text.color(Colors.black).make(),
-                  calendarcases[index].desies.text.color(Colors.black).make(),
+                  calendarcases[index].disease.text.color(Colors.black).make(),
                 ],
               ).box.color(Colors.lightBlueAccent).roundedSM.make().p4();
             }));
