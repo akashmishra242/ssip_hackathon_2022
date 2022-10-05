@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:ssip_hackathon_2022/ani_care_page.dart';
 import 'package:velocity_x/velocity_x.dart';
 
 import '../models/CasesModel.dart';
 
-String animal = "", doctor = "", desies = "", place = "";
+String animal = "", doctor = "", disease = "", place = "";
 final _formkey = GlobalKey<FormState>();
 
 class AddCasePage extends StatelessWidget {
@@ -48,11 +46,12 @@ class AddCasePage extends StatelessWidget {
                         if (value!.isEmpty) {
                           return "this Field can't be Empty";
                         }
-                        desies = value.toString();
+                        disease = value.toString();
                         return null;
                       },
                       decoration: const InputDecoration(
-                          hintText: "enter the dieses", label: Text("desies"))),
+                          hintText: "enter the disease",
+                          label: Text("disease"))),
                   TextFormField(
                       validator: (value) {
                         if (value!.isEmpty) {
@@ -67,8 +66,12 @@ class AddCasePage extends StatelessWidget {
                   ElevatedButton(
                           onPressed: () {
                             if (_formkey.currentState!.validate()) {
-                              AniCarePage.allcases.add(Case_model(animal,
-                                  desies, doctor, DateTime.now(), place));
+                              AniCarePage.allcases.add(Case_model(
+                                  animal: animal,
+                                  disease: disease,
+                                  Doctor: doctor,
+                                  date: DateTime.now(),
+                                  place: place));
                               Navigator.of(context).pop();
                             }
                           },

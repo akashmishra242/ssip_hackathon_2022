@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:ssip_hackathon_2022/ani_care_page.dart';
 
 import 'widgets/Drawer_HomePage.dart';
 
@@ -42,6 +43,26 @@ class _MyHomePageState extends State<MyHomePage> {
                       color: Colors.black, fontWeight: FontWeight.bold),
                 )),
           ),
+          const SizedBox(
+              height: 25,
+              child: Text(
+                  "<<<-----Just for navigation(you can remove later)--->>>")),
+          ActionChip(
+              elevation: 5,
+              labelStyle:
+                  const TextStyle(fontSize: 25, fontWeight: FontWeight.normal),
+              backgroundColor: Colors.red.shade100,
+              label: const Text("antiCarePage"),
+              avatar: const Icon(
+                Icons.logout,
+                size: 25,
+              ),
+              onPressed: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const AniCarePage()));
+              }),
         ],
       ),
     );

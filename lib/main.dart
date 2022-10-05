@@ -6,6 +6,7 @@ import 'package:ssip_hackathon_2022/Cases_pages/current_cases.dart';
 import 'package:ssip_hackathon_2022/ani_care_page.dart';
 import 'package:ssip_hackathon_2022/firebase_options.dart';
 
+import 'Authentication/viaEmail/SignupPage.dart';
 import 'Authentication/viaEmail/loginPage.dart';
 import 'home_page.dart';
 
@@ -26,10 +27,11 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       home: const AniCarePage(),
-      initialRoute: "/anti_care",
+      initialRoute: "/home",
       routes: {
-        "home": (context) => const MyHomePage(),
-        "login": (context) => const LoginScreen(),
+        "/home": (context) => const MyHomePage(),
+        "/login": (context) => const LoginScreen(),
+        "/signup": (context) => const RegistrationState(),
         "/anti_care": (context) => const AniCarePage(),
         "/past_cases": (context) => const PastCasesPage(),
         "/current_cases": (context) => const CurrentCasesPage(),
