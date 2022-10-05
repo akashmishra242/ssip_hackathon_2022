@@ -79,9 +79,6 @@ class _CurrentCasesPageState extends State<CurrentCasesPage> {
                           },
                           icon: Icon(Icons.done))
                       .p16(),
-                  currentcases[index].animal.text.color(Colors.black).make(),
-                  currentcases[index].Doctor.text.color(Colors.black).make(),
-                  currentcases[index].disease.text.color(Colors.black).make(),
                 ],
               ).box.color(Colors.lightBlueAccent).roundedSM.make().p4();
             }));

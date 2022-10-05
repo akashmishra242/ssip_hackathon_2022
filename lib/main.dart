@@ -27,7 +27,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       home: const AniCarePage(),
-      initialRoute: "/home",
+      initialRoute: "/anti_care",
       routes: {
         "/home": (context) => const MyHomePage(),
         "/login": (context) => const LoginScreen(),
