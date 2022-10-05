@@ -1,7 +1,13 @@
+import 'dart:async';
+import 'dart:developer';
+
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import 'package:ssip_hackathon_2022/Cases_pages/add_case_page.dart';
 import 'package:ssip_hackathon_2022/ani_care_page.dart';
 import 'package:ssip_hackathon_2022/models/CasesModel.dart';
 import 'package:velocity_x/velocity_x.dart';
@@ -56,31 +62,44 @@ class _CurrentCasesPageState extends State<CurrentCasesPage> {
                                 context: context,
                                 builder: (ctx) {
                                   return AlertDialog(
-                                    title: Text("Are you Sure"),
-                                    content: Text(
+                                    title: const Text("Are you Sure"),
+                                    content: const Text(
                                         "are You Sure that this case has been Completed !!"),
                                     actions: [
                                       ElevatedButton(
                                           onPressed: () {
-                                            currentcases[index].completed =
-                                                true;
+                                            AniCarePage.allcases[index]
+                                                .completed = true;
                                             Navigator.of(context).pop();
+
                                             setState(() {});
                                           },
-                                          child: Text("Yes")),
+                                          child: const Text("Yes")),
                                       ElevatedButton(
                                           onPressed: () {
                                             Navigator.of(context).pop();
                                           },
-                                          child: Text("No"))
+                                          child: const Text("No"))
                                     ],
                                   );
                                 });
                           },
-                          icon: Icon(Icons.done))
+                          icon: const Icon(Icons.done))
                       .p16(),
                 ],
               ).box.color(Colors.lightBlueAccent).roundedSM.make().p4();
             }));
+  }
+
+  addCase(String animal, String disease, String doctor, var date, String place,
+      bool completed) {
+    var _cases = Case_model(
+        animal: animal,
+        disease: disease,
+        Doctor: doctor,
+        date: date,
+        place: place,
+        completed: completed);
+    FirebaseFirestore.instance.collection('new_cases').add(_cases.toJson());
   }
 }

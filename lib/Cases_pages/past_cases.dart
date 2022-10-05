@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
@@ -8,9 +9,14 @@ import 'package:velocity_x/velocity_x.dart';
 
 List<Case_model> pastcases = [];
 
-class PastCasesPage extends StatelessWidget {
+class PastCasesPage extends StatefulWidget {
   const PastCasesPage({super.key});
 
+  @override
+  State<PastCasesPage> createState() => _PastCasesPageState();
+}
+
+class _PastCasesPageState extends State<PastCasesPage> {
   @override
   Widget build(BuildContext context) {
     pastcases = [];

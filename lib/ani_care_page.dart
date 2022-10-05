@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
@@ -19,6 +20,42 @@ List<Case_model> calendarcases = [];
 DateTime date = DateTime.now();
 
 class _AniCarePageState extends State<AniCarePage> {
+  List<String> collectionpath = ['new_cases'];
+  @override
+  void initState() {
+    fetchdata();
+    FirebaseFirestore.instance
+        .collection('new_cases')
+        .snapshots()
+        .listen((record) {
+      mapRecords(record);
+    });
+    super.initState();
+  }
+
+  fetchdata() async {
+    var records =
+        await FirebaseFirestore.instance.collection('new_cases').get();
+    mapRecords(records);
+  }
+
+  mapRecords(QuerySnapshot<Map<String, dynamic>> records) {
+    var _recv = records.docs
+        .map(
+          (element) => Case_model(
+              animal: element["animal"],
+              disease: element["disease"],
+              Doctor: element["Doctor"],
+              date: DateTime.now(),
+              place: element["place"],
+              completed: false),
+        )
+        .toList();
+    setState(() {
+      AniCarePage.allcases = _recv;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     calendarcases = [];

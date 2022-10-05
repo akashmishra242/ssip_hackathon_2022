@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:ssip_hackathon_2022/ani_care_page.dart';
 import 'package:velocity_x/velocity_x.dart';
@@ -7,9 +8,14 @@ import '../models/CasesModel.dart';
 String animal = "", doctor = "", disease = "", place = "";
 final _formkey = GlobalKey<FormState>();
 
-class AddCasePage extends StatelessWidget {
+class AddCasePage extends StatefulWidget {
   const AddCasePage({super.key});
 
+  @override
+  State<AddCasePage> createState() => _AddCasePageState();
+}
+
+class _AddCasePageState extends State<AddCasePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -71,7 +77,10 @@ class AddCasePage extends StatelessWidget {
                                   disease: disease,
                                   Doctor: doctor,
                                   date: DateTime.now(),
-                                  place: place));
+                                  place: place,
+                                  completed: false));
+                              addCase(animal, disease, doctor, DateTime.now(),
+                                  place, false);
                               Navigator.of(context).pop();
                             }
                           },
@@ -82,5 +91,21 @@ class AddCasePage extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  addCase(String animal, String disease, String doctor, var date, String place,
+      bool completed) {
+    var _cases = Case_model(
+        animal: animal,
+        disease: disease,
+        Doctor: doctor,
+        date: date,
+        place: place,
+        completed: completed);
+    FirebaseFirestore.instance.collection('new_cases').add(_cases.toJson());
+  }
+
+  deletecase(var id) {
+    FirebaseFirestore.instance.collection('new_cases').doc(id).delete();
   }
 }
