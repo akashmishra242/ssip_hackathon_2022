@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:ssip_hackathon_2022/ani_care_page.dart';
 import 'package:velocity_x/velocity_x.dart';
@@ -7,8 +8,51 @@ import '../models/CasesModel.dart';
 String animal = "", doctor = "", disease = "", place = "";
 final _formkey = GlobalKey<FormState>();
 
-class AddCasePage extends StatelessWidget {
+class AddCasePage extends StatefulWidget {
   const AddCasePage({super.key});
+
+  @override
+  State<AddCasePage> createState() => _AddCasePageState();
+}
+
+class _AddCasePageState extends State<AddCasePage> {
+  List<Case_model> newcases = [];
+  List<String> collectionpath = ['new_cases'];
+  @override
+  void initState() {
+    fetchdata();
+    FirebaseFirestore.instance
+        .collection('new_cases')
+        .snapshots()
+        .listen((record) {
+      mapRecords(record);
+    });
+    super.initState();
+  }
+
+  fetchdata() async {
+    var records =
+        await FirebaseFirestore.instance.collection('new_cases').get();
+    mapRecords(records);
+  }
+
+  mapRecords(QuerySnapshot<Map<String, dynamic>> records) {
+    var _recv = records.docs
+        .map(
+          (e) => Case_model(
+              animal: animal,
+              disease: disease,
+              Doctor: doctor,
+              date: DateTime.now(),
+              place: place),
+        )
+        .toList();
+
+    setState(() {
+      newcases = _recv;
+      if (records.docs.length != null) {}
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -72,6 +116,8 @@ class AddCasePage extends StatelessWidget {
                                   Doctor: doctor,
                                   date: DateTime.now(),
                                   place: place));
+                              addCase(animal, disease, doctor, DateTime.now(),
+                                  place);
                               Navigator.of(context).pop();
                             }
                           },
@@ -82,5 +128,20 @@ class AddCasePage extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  addCase(
+      String animal, String disease, String doctor, var date, String place) {
+    var _cases = Case_model(
+        animal: animal,
+        disease: disease,
+        Doctor: doctor,
+        date: date,
+        place: place);
+    FirebaseFirestore.instance.collection('new_cases').add(_cases.toJson());
+  }
+
+  deletecase(var id) {
+    FirebaseFirestore.instance.collection('new_cases').doc(id).delete();
   }
 }
