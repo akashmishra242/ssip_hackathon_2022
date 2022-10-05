@@ -30,7 +30,6 @@ class _CurrentCasesPageState extends State<CurrentCasesPage> {
               return Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-<<<<<<< HEAD
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
@@ -45,7 +44,7 @@ class _CurrentCasesPageState extends State<CurrentCasesPage> {
                           .color(Colors.black)
                           .make(),
                       currentcases[index]
-                          .desies
+                          .disease
                           .text
                           .color(Colors.black)
                           .make(),
@@ -79,12 +78,10 @@ class _CurrentCasesPageState extends State<CurrentCasesPage> {
                                 });
                           },
                           icon: Icon(Icons.done))
-                      .p16()
-=======
+                      .p16(),
                   currentcases[index].animal.text.color(Colors.black).make(),
                   currentcases[index].Doctor.text.color(Colors.black).make(),
                   currentcases[index].disease.text.color(Colors.black).make(),
->>>>>>> 097849f738bcc1658ae20f0932fa30d3533e7187
                 ],
               ).box.color(Colors.lightBlueAccent).roundedSM.make().p4();
             }));

@@ -83,7 +83,7 @@ class _AniCarePageState extends State<AniCarePage> {
                                         .color(Colors.black)
                                         .make(),
                                     calendarcases[index]
-                                        .desies
+                                        .disease
                                         .text
                                         .color(Colors.black)
                                         .make(),
