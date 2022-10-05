@@ -94,14 +94,14 @@ class _AddCasePageState extends State<AddCasePage> {
     );
   }
 
-  addCase(String animal, String disease, String doctor, var date, String place,
-      bool completed) {
+  addCase(String animal, String disease, String doctor, DateTime date,
+      String place, bool completed) {
     var _cases = Case_model(
         id: "id",
         animal: animal,
         disease: disease,
         Doctor: doctor,
-        date: date,
+        date: date.toUtc(),
         place: place,
         completed: completed);
     FirebaseFirestore.instance.collection('new_cases').add(_cases.toJson());

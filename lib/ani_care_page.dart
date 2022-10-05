@@ -47,7 +47,7 @@ class _AniCarePageState extends State<AniCarePage> {
               animal: element["animal"],
               disease: element["disease"],
               Doctor: element["Doctor"],
-              date: DateTime.now(),
+              date: DateTime.fromMicrosecondsSinceEpoch(element["date"]),
               place: element["place"],
               completed: element["completed"]),
         )

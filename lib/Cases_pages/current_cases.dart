@@ -1,13 +1,5 @@
-import 'dart:async';
-import 'dart:developer';
-
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:ssip_hackathon_2022/Cases_pages/add_case_page.dart';
 import 'package:ssip_hackathon_2022/ani_care_page.dart';
 import 'package:ssip_hackathon_2022/models/CasesModel.dart';
 import 'package:velocity_x/velocity_x.dart';
@@ -99,14 +91,14 @@ class _CurrentCasesPageState extends State<CurrentCasesPage> {
             }));
   }
 
-  setCase(String id, String animal, String disease, String doctor, var date,
-      String place, bool completed) {
+  setCase(String id, String animal, String disease, String doctor,
+      DateTime date, String place, bool completed) {
     var _cases = Case_model(
         id: id,
         animal: animal,
         disease: disease,
         Doctor: doctor,
-        date: date,
+        date: date.toUtc(),
         place: place,
         completed: completed);
     FirebaseFirestore.instance
