@@ -16,44 +16,6 @@ class AddCasePage extends StatefulWidget {
 }
 
 class _AddCasePageState extends State<AddCasePage> {
-  List<Case_model> newcases = [];
-  List<String> collectionpath = ['new_cases'];
-  @override
-  void initState() {
-    fetchdata();
-    FirebaseFirestore.instance
-        .collection('new_cases')
-        .snapshots()
-        .listen((record) {
-      mapRecords(record);
-    });
-    super.initState();
-  }
-
-  fetchdata() async {
-    var records =
-        await FirebaseFirestore.instance.collection('new_cases').get();
-    mapRecords(records);
-  }
-
-  mapRecords(QuerySnapshot<Map<String, dynamic>> records) {
-    var _recv = records.docs
-        .map(
-          (e) => Case_model(
-              animal: animal,
-              disease: disease,
-              Doctor: doctor,
-              date: DateTime.now(),
-              place: place),
-        )
-        .toList();
-
-    setState(() {
-      newcases = _recv;
-      if (records.docs.length != null) {}
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -115,9 +77,10 @@ class _AddCasePageState extends State<AddCasePage> {
                                   disease: disease,
                                   Doctor: doctor,
                                   date: DateTime.now(),
-                                  place: place));
+                                  place: place,
+                                  completed: false));
                               addCase(animal, disease, doctor, DateTime.now(),
-                                  place);
+                                  place, false);
                               Navigator.of(context).pop();
                             }
                           },
@@ -130,14 +93,15 @@ class _AddCasePageState extends State<AddCasePage> {
     );
   }
 
-  addCase(
-      String animal, String disease, String doctor, var date, String place) {
+  addCase(String animal, String disease, String doctor, var date, String place,
+      bool completed) {
     var _cases = Case_model(
         animal: animal,
         disease: disease,
         Doctor: doctor,
         date: date,
-        place: place);
+        place: place,
+        completed: completed);
     FirebaseFirestore.instance.collection('new_cases').add(_cases.toJson());
   }
 

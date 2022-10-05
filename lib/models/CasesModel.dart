@@ -17,6 +17,7 @@ class Case_model {
     required this.Doctor,
     required this.date,
     required this.place,
+    required this.completed,
   });
 
   String animal;
@@ -24,7 +25,7 @@ class Case_model {
   String Doctor;
   DateTime date;
   String place;
-  bool completed = false;
+  bool completed;
 
   factory Case_model.fromJson(Map<String, dynamic> json) => Case_model(
         animal: json["animal"],
@@ -32,6 +33,7 @@ class Case_model {
         Doctor: json["Doctor"],
         date: DateTime.fromMillisecondsSinceEpoch(json["date"]),
         place: json["place"],
+        completed: json["completed"],
       );
 
   Map<String, dynamic> toJson() => {
@@ -40,5 +42,6 @@ class Case_model {
         "Doctor": Doctor,
         "date": date.millisecondsSinceEpoch,
         "place": place,
+        "completed": completed,
       };
 }
