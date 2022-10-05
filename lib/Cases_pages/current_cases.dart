@@ -60,14 +60,18 @@ class _CurrentCasesPageState extends State<CurrentCasesPage> {
                                     actions: [
                                       ElevatedButton(
                                           onPressed: () {
-                                            setCase(
-                                                currentcases[index].id ?? '',
-                                                currentcases[index].animal,
-                                                currentcases[index].disease,
-                                                currentcases[index].Doctor,
-                                                currentcases[index].date,
-                                                currentcases[index].place,
-                                                true);
+                                            FirebaseFirestore.instance
+                                                .collection('new_cases')
+                                                .doc(currentcases[index].id)
+                                                .update({'completed': true});
+                                            // setCase(
+                                            //     currentcases[index].id ?? '',
+                                            //     currentcases[index].animal,
+                                            //     currentcases[index].disease,
+                                            //     currentcases[index].Doctor,
+                                            //     currentcases[index].date,
+                                            //     currentcases[index].place,
+                                            //     true);
                                             AniCarePage.allcases[index]
                                                 .completed = true;
                                             Navigator.of(context).pop();
