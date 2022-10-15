@@ -10,8 +10,15 @@ import 'Authentication/viaEmail/SignupPage.dart';
 import 'Authentication/viaEmail/loginPage.dart';
 import 'home_page.dart';
 import 'register.dart';
+import 'package:google_maps_flutter_platform_interface/google_maps_flutter_platform_interface.dart';
+import 'package:google_maps_flutter_android/google_maps_flutter_android.dart';
 
 void main() async {
+  final GoogleMapsFlutterPlatform mapsImplementation =
+      GoogleMapsFlutterPlatform.instance;
+  if (mapsImplementation is GoogleMapsFlutterAndroid) {
+    mapsImplementation.useAndroidViewSurface = true;
+  }
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   runApp(const MyApp());
@@ -27,8 +34,8 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const RegistrationState(),
-      initialRoute: "/login",
+      home: const AniCarePage(),
+      initialRoute: "/anti_care",
       debugShowCheckedModeBanner: false,
       routes: {
         "/home": (context) => const MyHomePage(),

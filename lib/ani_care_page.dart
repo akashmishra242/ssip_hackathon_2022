@@ -62,12 +62,23 @@ class _AniCarePageState extends State<AniCarePage> {
 
   @override
   Widget build(BuildContext context) {
-    late GoogleMapController mapController;
-
-    final LatLng _center = const LatLng(45.521563, -122.677433);
-
-    void _onMapCreated(GoogleMapController controller) {
-      mapController = controller;
+    final Map<String, Marker> _markers = {};
+    Future<void> _onMapCreated(GoogleMapController controller) async {
+      final googleOffices = await locations.getGoogleOffices();
+      setState(() {
+        _markers.clear();
+        for (final office in googleOffices.offices) {
+          final marker = Marker(
+            markerId: MarkerId(office.name),
+            position: LatLng(office.lat, office.lng),
+            infoWindow: InfoWindow(
+              title: office.name,
+              snippet: office.address,
+            ),
+          );
+          _markers[office.name] = marker;
+        }
+      });
     }
 
     calendarcases = [];
@@ -171,12 +182,14 @@ class _AniCarePageState extends State<AniCarePage> {
             : curr_index == 1
                 ? Center(
                     child: GoogleMap(
-                    onMapCreated: _onMapCreated,
-                    initialCameraPosition: CameraPosition(
-                      target: _center,
-                      zoom: 11.0,
+                      onMapCreated: _onMapCreated,
+                      initialCameraPosition: const CameraPosition(
+                        target: LatLng(0, 0),
+                        zoom: 13.5,
+                      ),
+                      markers: _markers.values.toSet(),
                     ),
-                  )).h60(context)
+                  ).h60(context)
                 : curr_index == 3
                     ? Center(
                         child: Column(
