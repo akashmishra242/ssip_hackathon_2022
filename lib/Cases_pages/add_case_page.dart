@@ -5,7 +5,18 @@ import 'package:velocity_x/velocity_x.dart';
 
 import '../models/CasesModel.dart';
 
-String animal = "", doctor = "", disease = "", place = "";
+String animal = "",
+    doctor = "",
+    disease = "",
+    place = "",
+    date = "",
+    month = "",
+    year = "",
+    state = "",
+    disease_desc = "",
+    owner_name = "",
+    owner_mobile_no = "",
+    breed = "";
 final _formkey = GlobalKey<FormState>();
 
 class AddCasePage extends StatefulWidget {
@@ -80,8 +91,8 @@ class _AddCasePageState extends State<AddCasePage> {
                               //     date: DateTime.now(),
                               //     place: place,
                               //     completed: false));
-                              addCase(animal, disease, doctor, DateTime.now(),
-                                  place, false);
+                              addCase(animal, disease, doctor, date, place,
+                                  false, month, year, state, breed);
                               Navigator.of(context).pop();
                             }
                           },
@@ -94,16 +105,32 @@ class _AddCasePageState extends State<AddCasePage> {
     );
   }
 
-  addCase(String animal, String disease, String doctor, DateTime date,
-      String place, bool completed) {
+  addCase(
+      String animal,
+      String disease,
+      String doctor,
+      String date,
+      String place,
+      bool completed,
+      String month,
+      String year,
+      String state,
+      String breed) {
     var _cases = Case_model(
         id: "id",
         animal: animal,
         disease: disease,
         Doctor: doctor,
-        date: date.toUtc(),
+        date: date,
+        month: month,
+        year: year,
+        state: state,
+        breed: breed,
+        completed: completed,
         place: place,
-        completed: completed);
+        diseaseDesc: disease_desc,
+        ownerMobileNo: owner_mobile_no,
+        ownerName: owner_name);
     FirebaseFirestore.instance.collection('new_cases').add(_cases.toJson());
   }
 

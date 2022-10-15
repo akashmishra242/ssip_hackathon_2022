@@ -46,13 +46,21 @@ class _AniCarePageState extends State<AniCarePage> {
     var _recv = records.docs
         .map(
           (element) => Case_model(
-              id: element.id,
-              animal: element["animal"],
-              disease: element["disease"],
-              Doctor: element["Doctor"],
-              date: DateTime.fromMicrosecondsSinceEpoch(element["date"]),
-              place: element["place"],
-              completed: element["completed"]),
+            id: element.id,
+            animal: element["animal"],
+            disease: element["disease"],
+            Doctor: element["Doctor"],
+            date: element["date"],
+            place: element["place"],
+            completed: element["completed"],
+            breed: element["breed"],
+            month: element["month"],
+            state: element["state"],
+            year: element["year"],
+            diseaseDesc: element["diseaseDesc"],
+            ownerMobileNo: element["ownerMobileNo"],
+            ownerName: element["ownerName"],
+          ),
         )
         .toList();
     setState(() {
@@ -72,7 +80,7 @@ class _AniCarePageState extends State<AniCarePage> {
 
     calendarcases = [];
     calendarcases.addAll(AniCarePage.allcases);
-    calendarcases.retainWhere((element) => element.date.day == date.day);
+    //calendarcases.retainWhere((element) => element.date.day == date.day);
     return Scaffold(
       drawer: Drawer(
           child: Column(

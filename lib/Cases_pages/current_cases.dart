@@ -4,6 +4,8 @@ import 'package:ssip_hackathon_2022/ani_care_page.dart';
 import 'package:ssip_hackathon_2022/models/CasesModel.dart';
 import 'package:velocity_x/velocity_x.dart';
 
+String disease_desc = "", owner_name = "", owner_mobile_no = "";
+
 class CurrentCasesPage extends StatefulWidget {
   const CurrentCasesPage({super.key});
   @override
@@ -103,16 +105,33 @@ class _CurrentCasesPageState extends State<CurrentCasesPage> {
             }));
   }
 
-  setCase(String id, String animal, String disease, String doctor,
-      DateTime date, String place, bool completed) {
+  setCase(
+      String id,
+      String animal,
+      String disease,
+      String doctor,
+      String date,
+      String place,
+      bool completed,
+      String month,
+      String year,
+      String state,
+      String breed) {
     var _cases = Case_model(
         id: id,
         animal: animal,
         disease: disease,
         Doctor: doctor,
-        date: date.toUtc(),
+        date: date,
+        month: month,
+        year: year,
+        state: state,
+        breed: breed,
+        completed: completed,
         place: place,
-        completed: completed);
+        diseaseDesc: disease_desc,
+        ownerMobileNo: owner_mobile_no,
+        ownerName: owner_name);
     FirebaseFirestore.instance
         .collection('new_cases')
         .doc(id)
