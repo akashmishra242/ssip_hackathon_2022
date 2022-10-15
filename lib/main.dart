@@ -27,7 +27,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       home: const RegistrationState(),
-      initialRoute: "/anti_care",
+      initialRoute: "/login",
       debugShowCheckedModeBanner: false,
       routes: {
         "/home": (context) => const MyHomePage(),
