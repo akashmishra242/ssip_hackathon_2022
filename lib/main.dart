@@ -1,6 +1,3 @@
-import 'dart:developer';
-
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:ssip_hackathon_2022/Cases_pages/add_case_page.dart';
@@ -29,8 +26,9 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const AniCarePage(),
+      home: const RegistrationState(),
       initialRoute: "/anti_care",
+      debugShowCheckedModeBanner: false,
       routes: {
         "/home": (context) => const MyHomePage(),
         "/login": (context) => const LoginScreen(),

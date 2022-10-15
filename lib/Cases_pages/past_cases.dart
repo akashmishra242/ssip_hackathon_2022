@@ -25,24 +25,48 @@ class _PastCasesPageState extends State<PastCasesPage> {
     return Scaffold(
         appBar: AppBar(
           title: Text("Past Cases"),
+          backgroundColor: Color.fromARGB(255, 74, 188, 150),
         ),
         body: ListView.builder(
             itemCount: pastcases.length,
             itemBuilder: (context, index) {
-              return Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      pastcases[index].animal.text.color(Colors.black).make(),
-                      pastcases[index].Doctor.text.color(Colors.black).make(),
-                      pastcases[index].disease.text.color(Colors.black).make(),
-                    ],
-                  ).p16(),
-                  Icon(Icons.done_outline).p12(),
-                ],
-              ).box.color(Colors.lightBlueAccent).roundedSM.make().p4();
+              return Card(
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(20)),
+                      clipBehavior: Clip.antiAlias,
+                      elevation: 10.0,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              pastcases[index]
+                                  .animal
+                                  .text
+                                  .color(Colors.black)
+                                  .make(),
+                              pastcases[index]
+                                  .Doctor
+                                  .text
+                                  .color(Colors.black)
+                                  .make(),
+                              pastcases[index]
+                                  .disease
+                                  .text
+                                  .color(Colors.black)
+                                  .make(),
+                            ],
+                          ).p16(),
+                          Icon(Icons.done_outline).p20(),
+                        ],
+                      )
+                          .box
+                          .color(Color.fromARGB(213, 239, 249, 238))
+                          .roundedSM
+                          .make())
+                  .px8()
+                  .py4();
             }));
   }
 }

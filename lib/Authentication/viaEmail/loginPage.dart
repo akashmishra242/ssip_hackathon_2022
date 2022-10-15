@@ -11,6 +11,7 @@ import 'SignupPage.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({Key? key}) : super(key: key);
+  static final auth = FirebaseAuth.instance;
 
   @override
   State<LoginScreen> createState() => _LoginScreenState();
@@ -28,7 +29,6 @@ class _LoginScreenState extends State<LoginScreen> {
   final TextEditingController passwordController = TextEditingController();
 
   //firebase
-  final _auth = FirebaseAuth.instance;
 
   // string for displaying the error Message
   String? errorMessage;
@@ -245,7 +245,7 @@ class _LoginScreenState extends State<LoginScreen> {
   void signIn(String email, String password) async {
     if (_formkey.currentState!.validate()) {
       try {
-        await _auth
+        await LoginScreen.auth
             .signInWithEmailAndPassword(email: email, password: password)
             .then((uid) => {
                   setState(() {

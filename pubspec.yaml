@@ -40,6 +40,11 @@ dependencies:
   image_picker: ^0.8.5+3
   path_provider: ^2.0.11
   velocity_x: ^3.5.1
+  google_maps_flutter: ^2.2.1
+  http: ^0.13.5
+  json_serializable: ^6.5.1
+  json_annotation: ^4.7.0
+  build_runner: ^2.3.0
 
 dev_dependencies:
   flutter_lints: ^2.0.0
@@ -58,6 +63,7 @@ flutter:
   # To add assets to your application, add an assets section, like this:
   assets:
     - Assets/Images/
+    - assets/locations.json
   #   - images/a_dot_ham.jpeg
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

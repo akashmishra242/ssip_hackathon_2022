@@ -4,6 +4,8 @@
         android:label="ssip_hackathon_2022"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
+        <meta-data android:name="com.google.android.geo.API_KEY"
+               android:value="YOUR-KEY-HERE"/>
         <activity
             android:name=".MainActivity"
             android:exported="true"
