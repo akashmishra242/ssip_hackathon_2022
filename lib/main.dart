@@ -9,6 +9,7 @@ import 'package:ssip_hackathon_2022/firebase_options.dart';
 import 'Authentication/viaEmail/SignupPage.dart';
 import 'Authentication/viaEmail/loginPage.dart';
 import 'home_page.dart';
+import 'register.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -37,6 +38,7 @@ class MyApp extends StatelessWidget {
         "/past_cases": (context) => const PastCasesPage(),
         "/current_cases": (context) => const CurrentCasesPage(),
         "/add_case": (context) => const AddCasePage(),
+        "/register": (context) => const Register(),
       },
     );
   }
