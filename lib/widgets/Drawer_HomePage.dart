@@ -1,3 +1,6 @@
+import 'dart:developer';
+
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -14,6 +17,28 @@ class HomePageDrawer extends StatefulWidget {
 }
 
 class _HomePageDrawerState extends State<HomePageDrawer> {
+  String fullname = '';
+
+  getUserName() async {
+    String name = '';
+
+    DocumentSnapshot snapshot = await FirebaseFirestore.instance
+        .collection('users')
+        .doc(FirebaseAuth.instance.currentUser?.uid)
+        .get();
+    name = "${snapshot['firstName']} ${snapshot['secondName']}";
+    log(snapshot.data().toString());
+    setState(() {
+      fullname = name;
+    });
+  }
+
+  @override
+  void initState() {
+    getUserName();
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     Future<void> logout(BuildContext context) async {
@@ -39,7 +64,7 @@ class _HomePageDrawerState extends State<HomePageDrawer> {
                 accountName: Text(
                   FirebaseAuth.instance.currentUser?.displayName ??
                       FirebaseAuth.instance.currentUser?.phoneNumber ??
-                      '',
+                      fullname,
                   style: const TextStyle(
                     fontSize: 20,
                   ),
@@ -63,7 +88,7 @@ class _HomePageDrawerState extends State<HomePageDrawer> {
               size: 35,
             ),
             title: const Text(
-              "My Profile",
+              'Profile',
               style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
             ),
           ),
