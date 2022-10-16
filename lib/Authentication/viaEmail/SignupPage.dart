@@ -292,6 +292,7 @@ class _RegistrationStateState extends State<RegistrationState> {
     userModel.uid = user.uid;
     userModel.firstName = firstNameEditingController.text;
     userModel.secondName = secondNameEditingController.text;
+    userModel.phoneno = 'N/A';
 
     await firebaseFirestore
         .collection("users")

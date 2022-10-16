@@ -1,8 +1,10 @@
 import 'dart:developer';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 import '../../home_page.dart';
+import '../../models/UserModel.dart';
 
 class SignInWithPhone extends StatefulWidget {
   const SignInWithPhone({Key? key}) : super(key: key);
@@ -74,6 +76,7 @@ class _SignInWithPhoneState extends State<SignInWithPhone> {
                 ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
                   content: Text("Login Successfull"),
                 )),
+                postphonenologinDetailsToFirestore(),
                 Navigator.of(context).popUntil((route) => route.isFirst),
                 Navigator.of(context).pushReplacement(
                   MaterialPageRoute(builder: (context) => const MyHomePage()),
@@ -228,5 +231,18 @@ class _SignInWithPhoneState extends State<SignInWithPhone> {
         ),
       ),
     );
+  }
+
+  postphonenologinDetailsToFirestore() async {
+    UserModel userModel = UserModel();
+    userModel.email = 'N/A';
+    userModel.uid = FirebaseAuth.instance.currentUser?.uid;
+    userModel.firstName = 'N/A';
+    userModel.secondName = 'N/A';
+    userModel.phoneno = FirebaseAuth.instance.currentUser?.phoneNumber;
+    await FirebaseFirestore.instance
+        .collection("users")
+        .doc(FirebaseAuth.instance.currentUser?.uid)
+        .set(userModel.toMap());
   }
 }

@@ -329,6 +329,7 @@ class _LoginScreenState extends State<LoginScreen> {
     userModel.uid = FirebaseAuth.instance.currentUser?.uid;
     userModel.firstName = account.displayName?.split(' ')[0];
     userModel.secondName = account.displayName?.split(' ')[1] ?? 'N/A';
+    userModel.phoneno = 'N/A';
 
     await FirebaseFirestore.instance
         .collection("users")
