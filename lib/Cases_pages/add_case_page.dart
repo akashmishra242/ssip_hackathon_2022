@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:ssip_hackathon_2022/ani_care_page.dart';
+import 'package:ssip_hackathon_2022/home_page.dart';
 import 'package:velocity_x/velocity_x.dart';
 
 import '../models/CasesModel.dart';
@@ -52,12 +53,12 @@ class _AddCasePageState extends State<AddCasePage> {
                         if (value!.isEmpty) {
                           return "this Field can't be Empty";
                         }
-                        doctor = value.toString();
+                        breed = value.toString();
                         return null;
                       },
                       decoration: const InputDecoration(
                           hintText: "enter the Doctor Name",
-                          label: Text("Doctor"))),
+                          label: Text("breed"))),
                   TextFormField(
                       validator: (value) {
                         if (value!.isEmpty) {
@@ -67,8 +68,19 @@ class _AddCasePageState extends State<AddCasePage> {
                         return null;
                       },
                       decoration: const InputDecoration(
-                          hintText: "enter the disease",
+                          hintText: "enter the Doctor Name",
                           label: Text("disease"))),
+                  TextFormField(
+                      validator: (value) {
+                        if (value!.isEmpty) {
+                          return "this Field can't be Empty";
+                        }
+                        doctor = value.toString();
+                        return null;
+                      },
+                      decoration: const InputDecoration(
+                          hintText: "enter the disease",
+                          label: Text("doctor"))),
                   TextFormField(
                       validator: (value) {
                         if (value!.isEmpty) {
@@ -78,8 +90,19 @@ class _AddCasePageState extends State<AddCasePage> {
                         return null;
                       },
                       decoration: const InputDecoration(
-                          hintText: "enter the place name",
-                          label: Text("Place"))),
+                          hintText: "enter the Doctor Name",
+                          label: Text("City"))),
+                  TextFormField(
+                      validator: (value) {
+                        if (value!.isEmpty) {
+                          return "this Field can't be Empty";
+                        }
+                        state = value.toString();
+                        return null;
+                      },
+                      decoration: const InputDecoration(
+                          hintText: "enter the Doctor Name",
+                          label: Text("State"))),
                   ElevatedButton(
                           onPressed: () {
                             if (_formkey.currentState!.validate()) {
@@ -91,8 +114,17 @@ class _AddCasePageState extends State<AddCasePage> {
                               //     date: DateTime.now(),
                               //     place: place,
                               //     completed: false));
-                              addCase(animal, disease, doctor, date, place,
-                                  false, month, year, state, breed);
+                              addCase(
+                                  animal,
+                                  disease,
+                                  doctor,
+                                  DateTime.now().day.toString(),
+                                  place,
+                                  false,
+                                  DateTime.now().month.toString(),
+                                  DateTime.now().year.toString(),
+                                  state,
+                                  breed);
                               Navigator.of(context).pop();
                             }
                           },
@@ -117,7 +149,7 @@ class _AddCasePageState extends State<AddCasePage> {
       String state,
       String breed) {
     var _cases = Case_model(
-        id: "id",
+        id: "${AniCarePage.allcases.length + 1}",
         animal: animal,
         disease: disease,
         Doctor: doctor,

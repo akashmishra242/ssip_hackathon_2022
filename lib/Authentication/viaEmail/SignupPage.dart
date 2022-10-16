@@ -191,7 +191,7 @@ class _RegistrationStateState extends State<RegistrationState> {
           icon: const Icon(Icons.arrow_back, color: Colors.red),
           onPressed: () {
             // passing this to our root
-            Navigator.of(context).pop();
+            Navigator.pushReplacementNamed(context, "/login");
           },
         ),
       ),

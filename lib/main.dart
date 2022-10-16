@@ -1,15 +1,16 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:ssip_hackathon_2022/Authentication/MyRoutes.dart';
 import 'package:ssip_hackathon_2022/Cases_pages/add_case_page.dart';
 import 'package:ssip_hackathon_2022/Cases_pages/past_cases.dart';
 import 'package:ssip_hackathon_2022/Cases_pages/current_cases.dart';
 import 'package:ssip_hackathon_2022/ani_care_page.dart';
+import 'package:ssip_hackathon_2022/case_detail_page.dart';
 import 'package:ssip_hackathon_2022/firebase_options.dart';
 
 import 'Authentication/viaEmail/SignupPage.dart';
 import 'Authentication/viaEmail/loginPage.dart';
 import 'home_page.dart';
-import 'register.dart';
 import 'package:google_maps_flutter_platform_interface/google_maps_flutter_platform_interface.dart';
 import 'package:google_maps_flutter_android/google_maps_flutter_android.dart';
 
@@ -38,14 +39,14 @@ class MyApp extends StatelessWidget {
       initialRoute: "/anti_care",
       debugShowCheckedModeBanner: false,
       routes: {
-        "/home": (context) => const MyHomePage(),
-        "/login": (context) => const LoginScreen(),
-        "/signup": (context) => const RegistrationState(),
-        "/anti_care": (context) => const AniCarePage(),
-        "/past_cases": (context) => const PastCasesPage(),
-        "/current_cases": (context) => const CurrentCasesPage(),
-        "/add_case": (context) => const AddCasePage(),
-        "/register": (context) => const Register(),
+        MyRoutes.HomePage: (context) => const MyHomePage(),
+        MyRoutes.LoginPage: (context) => const LoginScreen(),
+        MyRoutes.SignUpPage: (context) => const RegistrationState(),
+        MyRoutes.AnimalCarePage: (context) => const AniCarePage(),
+        MyRoutes.PastCasesPage: (context) => const PastCasesPage(),
+        MyRoutes.CurrentCasesPage: (context) => const CurrentCasesPage(),
+        MyRoutes.AddCasePage: (context) => const AddCasePage(),
+        MyRoutes.CaseDetailPage: (context) => const CaseDetailPage(),
       },
     );
   }

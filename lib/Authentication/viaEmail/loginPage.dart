@@ -3,6 +3,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import 'package:velocity_x/velocity_x.dart';
 
 import '../../home_page.dart';
 import '../../models/UserModel.dart';
@@ -150,22 +151,15 @@ class _LoginScreenState extends State<LoginScreen> {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: <Widget>[
                             const Text("Don't have an account? "),
-                            GestureDetector(
-                              onTap: () {
-                                Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) =>
-                                            const RegistrationState()));
-                              },
-                              child: const Text(
-                                "SignUp",
-                                style: TextStyle(
-                                    color: Colors.redAccent,
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 15),
-                              ),
-                            )
+                            "SignUp"
+                                .text
+                                .color(Colors.red)
+                                .bold
+                                .make()
+                                .onTap(() {
+                              Navigator.pushReplacementNamed(
+                                  context, "/signup");
+                            }),
                           ]),
                       SizedBox(
                         height: 60,
@@ -263,7 +257,6 @@ class _LoginScreenState extends State<LoginScreen> {
         switch (error.code) {
           case "invalid-email":
             errorMessage = "Your email address appears to be malformed.";
-
             break;
           case "wrong-password":
             errorMessage = "Your password is wrong.";

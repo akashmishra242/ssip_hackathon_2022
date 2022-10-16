@@ -1,6 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:ssip_hackathon_2022/Authentication/MyRoutes.dart';
 import 'package:ssip_hackathon_2022/ani_care_page.dart';
+import 'package:ssip_hackathon_2022/case_detail_page.dart';
 import 'package:ssip_hackathon_2022/models/CasesModel.dart';
 import 'package:velocity_x/velocity_x.dart';
 
@@ -100,6 +102,10 @@ class _CurrentCasesPageState extends State<CurrentCasesPage> {
                           .color(const Color.fromARGB(213, 239, 249, 238))
                           .roundedSM
                           .make())
+                  .onTap(() {
+                    CaseDetailPage.selectedcase = currentcases[index];
+                    Navigator.pushNamed(context, MyRoutes.CaseDetailPage);
+                  })
                   .px8()
                   .py4();
             }));

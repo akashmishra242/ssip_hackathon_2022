@@ -57,9 +57,9 @@ class _AniCarePageState extends State<AniCarePage> {
             month: element["month"],
             state: element["state"],
             year: element["year"],
-            diseaseDesc: element["diseaseDesc"],
-            ownerMobileNo: element["ownerMobileNo"],
-            ownerName: element["ownerName"],
+            diseaseDesc: element["disease_desc"],
+            ownerMobileNo: element["owner_mobile_no"],
+            ownerName: element["owner_name"],
           ),
         )
         .toList();
@@ -91,7 +91,10 @@ class _AniCarePageState extends State<AniCarePage> {
 
     calendarcases = [];
     calendarcases.addAll(AniCarePage.allcases);
-    //calendarcases.retainWhere((element) => element.date.day == date.day);
+    calendarcases.retainWhere((element) =>
+        (element.date == date.day.toString()) &&
+        (element.year == date.year.toString()) &&
+        (element.month == date.month.toString()));
     return Scaffold(
       drawer: Drawer(
           child: Column(
@@ -151,42 +154,49 @@ class _AniCarePageState extends State<AniCarePage> {
                       ? ListView.builder(
                           itemCount: calendarcases.length,
                           itemBuilder: (context, index) {
-                            return Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
+                            return Card(
+                                elevation: 15.0,
+                                clipBehavior: Clip.antiAlias,
+                                shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(20)),
+                                child: Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
                                   children: [
-                                    calendarcases[index]
-                                        .animal
-                                        .text
-                                        .color(Colors.black)
-                                        .make(),
-                                    calendarcases[index]
-                                        .Doctor
-                                        .text
-                                        .color(Colors.black)
-                                        .make(),
-                                    calendarcases[index]
-                                        .disease
-                                        .text
-                                        .color(Colors.black)
-                                        .make(),
+                                    Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        calendarcases[index]
+                                            .animal
+                                            .text
+                                            .color(Colors.black)
+                                            .make(),
+                                        calendarcases[index]
+                                            .Doctor
+                                            .text
+                                            .color(Colors.black)
+                                            .make(),
+                                        calendarcases[index]
+                                            .disease
+                                            .text
+                                            .color(Colors.black)
+                                            .make(),
+                                      ],
+                                    ).p16(),
+                                    Text("${date.day}/${date.month}/${date.year}")
+                                        .p16()
                                   ],
-                                ).p16(),
-                                Text("${date.day}/${date.month}/${date.year}")
-                                    .p16()
-                              ],
-                            )
-                                .box
-                                .color(Colors.lightBlueAccent)
-                                .roundedSM
-                                .make()
-                                .p4();
+                                )
+                                    .box
+                                    .color(const Color.fromARGB(
+                                        213, 239, 249, 238))
+                                    .roundedSM
+                                    .make());
                           }).expand()
                       : const Center(child: Text("No Cases on selected Date"))
                 ],
-              ).h60(context)
+              ).h(MediaQuery.of(context).size.height * 0.82)
             : curr_index == 1
                 ? Center(
                     child: GoogleMap(
@@ -197,7 +207,7 @@ class _AniCarePageState extends State<AniCarePage> {
                       ),
                       markers: _markers.values.toSet(),
                     ),
-                  ).h60(context)
+                  ).h(MediaQuery.of(context).size.height * 0.81)
                 : curr_index == 3
                     ? Center(
                         child: Column(
@@ -209,7 +219,7 @@ class _AniCarePageState extends State<AniCarePage> {
                       )
                     : Center(
                         child: Column(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
                         children: [
                           Card(
                               elevation: 15.0,
@@ -279,7 +289,7 @@ class _AniCarePageState extends State<AniCarePage> {
                             }),
                           ).p12(),
                         ],
-                      )).expand(),
+                      )).h(MediaQuery.of(context).size.height * 0.8),
       ),
       bottomNavigationBar: BottomNavigationBar(
           unselectedItemColor: Colors.green,
