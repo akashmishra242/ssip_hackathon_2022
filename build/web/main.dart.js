@@ -89273,7 +89273,7 @@ return new A.wD(new A.ae2(A.lX(r.h(q,"lat")),A.lX(r.h(q,"lng"))),A.bm(s.h(a,"id"
 $S:547}
 A.PN.prototype={
 R(a){var s=A.aHx(null,B.fY,null)
-return new A.CA(B.ky,A.af(["/home",new A.afZ(),"/login",new A.ag_(),"/signup",new A.ag0(),"/ani_care",new A.ag1(),"/past_cases",new A.ag2(),"/current_cases",new A.ag3(),"/add_case",new A.ag4(),"/case_detail_page",new A.ag5()],t.N,t.Ab),"/login","Flutter Demo",s,!1,null)}}
+return new A.CA(B.ky,A.af(["/home",new A.afZ(),"/login",new A.ag_(),"/signup",new A.ag0(),"/ani_care",new A.ag1(),"/past_cases",new A.ag2(),"/current_cases",new A.ag3(),"/add_case",new A.ag4(),"/case_detail_page",new A.ag5()],t.N,t.Ab),"/login","SSIP HACKATHON 2022",s,!1,null)}}
 A.afZ.prototype={
 $1(a){return B.h3},
 $S:62}
