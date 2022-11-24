@@ -30,10 +30,24 @@ migrate_working_dir/
 .packages
 .pub-cache/
 .pub/
-/build/
-
+/build/image_cropper
+/build/image_picker_android
+/build/kotlin
+/build/path_provider_android
+/build/8dfd97711756e7aee226b7477a87d6c3
+/build/960ef18f2f7222cd7856760115b631f6
+/build/app
+/build/cloud_firestore
+/build/firebase_auth
+/build/firebase_core
+/build/firebase_storage
+/build/flutter_assets
+/build/flutter_image_compress
+/build/flutter_plugin_android_lifecycle
+/build/google_maps_flutter_android
+/build/c075001b96339384a97db4862b8ab8db.cache.dill.track.dill
+/build/cf81dbb7dee963bedb1148fc66e70128.cache.dill.track.dill
 # Web related
-lib/generated_plugin_registrant.dart
 
 # Symbolication related
 app.*.symbols

@@ -31,7 +31,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'SSIP HACKATHON 2022',
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
