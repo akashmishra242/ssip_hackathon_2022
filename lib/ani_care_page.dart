@@ -135,90 +135,90 @@ class _AniCarePageState extends State<AniCarePage> {
           ).px32(),
         ],
       ),
-      body: SingleChildScrollView(
-        child: curr_index == 2
-            ? Column(
-                children: [
-                  IconButton(
-                      onPressed: () async {
-                        var data = await showDatePicker(
-                            context: context,
-                            initialDate: date,
-                            firstDate: DateTime.utc(2000),
-                            lastDate: DateTime.now());
-                        if (data != null) date = data as DateTime;
-                        setState(() {});
-                      },
-                      icon: const Icon(Icons.calendar_today)),
-                  calendarcases.isNotEmpty
-                      ? ListView.builder(
-                          itemCount: calendarcases.length,
-                          itemBuilder: (context, index) {
-                            return Card(
-                                elevation: 15.0,
-                                clipBehavior: Clip.antiAlias,
-                                shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(20)),
-                                child: Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: [
-                                        calendarcases[index]
-                                            .animal
-                                            .text
-                                            .color(Colors.black)
-                                            .make(),
-                                        calendarcases[index]
-                                            .Doctor
-                                            .text
-                                            .color(Colors.black)
-                                            .make(),
-                                        calendarcases[index]
-                                            .disease
-                                            .text
-                                            .color(Colors.black)
-                                            .make(),
-                                      ],
-                                    ).p16(),
-                                    Text("${date.day}/${date.month}/${date.year}")
-                                        .p16()
-                                  ],
-                                )
-                                    .box
-                                    .color(const Color.fromARGB(
-                                        213, 239, 249, 238))
-                                    .roundedSM
-                                    .make());
-                          }).expand()
-                      : const Center(child: Text("No Cases on selected Date"))
-                ],
-              ).h(MediaQuery.of(context).size.height * 0.82)
-            : curr_index == 1
-                ? Center(
-                    child: GoogleMap(
-                      onMapCreated: _onMapCreated,
-                      initialCameraPosition: const CameraPosition(
-                        target: LatLng(0, 0),
-                        zoom: 13.5,
-                      ),
-                      markers: _markers.values.toSet(),
+      body: curr_index == 2
+          ? Column(
+              children: [
+                IconButton(
+                    onPressed: () async {
+                      var data = await showDatePicker(
+                          context: context,
+                          initialDate: date,
+                          firstDate: DateTime.utc(2000),
+                          lastDate: DateTime.now());
+                      if (data != null) date = data as DateTime;
+                      setState(() {});
+                    },
+                    icon: const Icon(Icons.calendar_today)),
+                calendarcases.isNotEmpty
+                    ? ListView.builder(
+                        itemCount: calendarcases.length,
+                        itemBuilder: (context, index) {
+                          return Card(
+                              elevation: 15.0,
+                              clipBehavior: Clip.antiAlias,
+                              shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(20)),
+                              child: Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      calendarcases[index]
+                                          .animal
+                                          .text
+                                          .color(Colors.black)
+                                          .make(),
+                                      calendarcases[index]
+                                          .Doctor
+                                          .text
+                                          .color(Colors.black)
+                                          .make(),
+                                      calendarcases[index]
+                                          .disease
+                                          .text
+                                          .color(Colors.black)
+                                          .make(),
+                                    ],
+                                  ).p16(),
+                                  Text("${date.day}/${date.month}/${date.year}")
+                                      .p16()
+                                ],
+                              )
+                                  .box
+                                  .color(
+                                      const Color.fromARGB(213, 239, 249, 238))
+                                  .roundedSM
+                                  .make());
+                        }).expand()
+                    : const Center(child: Text("No Cases on selected Date"))
+              ],
+            ).h(MediaQuery.of(context).size.height * 0.82)
+          : curr_index == 1
+              ? Center(
+                  child: GoogleMap(
+                    onMapCreated: _onMapCreated,
+                    initialCameraPosition: const CameraPosition(
+                      target: LatLng(0, 0),
+                      zoom: 13.5,
                     ),
-                  ).h(MediaQuery.of(context).size.height * 0.81)
-                : curr_index == 3
-                    ? Center(
-                        child: Column(
-                          children: [
-                            ElevatedButton(
-                                onPressed: () {}, child: const Text("Log Out")),
-                          ],
-                        ),
-                      )
-                    : Center(
-                        child: Column(
+                    markers: _markers.values.toSet(),
+                  ),
+                ).h(MediaQuery.of(context).size.height * 0.81)
+              : curr_index == 3
+                  ? Center(
+                      child: Column(
+                        children: [
+                          ElevatedButton(
+                              onPressed: () {}, child: const Text("Log Out")),
+                        ],
+                      ),
+                    )
+                  : Center(
+                      child: SingleChildScrollView(
+                      child: Column(
                         mainAxisAlignment: MainAxisAlignment.spaceAround,
                         children: [
                           Card(
@@ -289,8 +289,8 @@ class _AniCarePageState extends State<AniCarePage> {
                             }),
                           ).p12(),
                         ],
-                      )).h(MediaQuery.of(context).size.height * 0.8),
-      ),
+                      ),
+                    )).h(MediaQuery.of(context).size.height * 0.8),
       bottomNavigationBar: BottomNavigationBar(
           unselectedItemColor: Colors.green,
           selectedItemColor: Colors.lightBlue,
