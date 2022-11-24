@@ -1,8 +1,8 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:ssip_hackathon_2022/ani_care_page.dart';
-
-import 'widgets/Drawer_HomePage.dart';
+import 'widgets/Calender/sfcalender.dart';
+import 'widgets/Drawer/Drawer_HomePage.dart';
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({Key? key}) : super(key: key);
@@ -62,6 +62,22 @@ class _MyHomePageState extends State<MyHomePage> {
                     context,
                     MaterialPageRoute(
                         builder: (context) => const AniCarePage()));
+              }),
+          ActionChip(
+              elevation: 5,
+              labelStyle:
+                  const TextStyle(fontSize: 25, fontWeight: FontWeight.normal),
+              backgroundColor: Colors.red.shade100,
+              label: const Text("SFCalenderPage"),
+              avatar: const Icon(
+                Icons.logout,
+                size: 25,
+              ),
+              onPressed: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const SyncfusionCalender()));
               }),
         ],
       ),

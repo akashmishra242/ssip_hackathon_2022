@@ -103,6 +103,19 @@ class _AddCasePageState extends State<AddCasePage> {
                       decoration: const InputDecoration(
                           hintText: "enter the Doctor Name",
                           label: Text("State"))),
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  FloatingActionButton.extended(
+                      onPressed: () {
+                        showDateRangePicker(
+                          context: context,
+                          firstDate: DateTime(2018, 01, 01),
+                          lastDate: DateTime(2024, 12, 31),
+                        );
+                      },
+                      label: const Text("Select Date"),
+                      icon: const Icon(Icons.calendar_month)),
                   ElevatedButton(
                           onPressed: () {
                             if (_formkey.currentState!.validate()) {
