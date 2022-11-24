@@ -3,13 +3,15 @@ const MANIFEST = 'flutter-app-manifest';
 const TEMP = 'flutter-temp-cache';
 const CACHE_NAME = 'flutter-app-cache';
 const RESOURCES = {
-  "assets/AssetManifest.json": "a6f1adf2526b17dd2fd014d9bd7185e2",
+  "assets/AssetManifest.json": "338380255173e939e8f570646cd8a86c",
 "assets/Assets/Images/add%2520cases.png": "0b597164dde06edfe8522a5e86ac5693",
 "assets/Assets/Images/appbar.png": "62347f3bbfdf8a8c6f756b9e9af69e6d",
+"assets/Assets/Images/app_logo.png": "2a7f6242863b9a92743c68019ad032b6",
 "assets/Assets/Images/Calender_ideal.png": "d559b30e9c72bd514e024408821b7f8e",
 "assets/Assets/Images/cow.jpg": "092bd623840b6e671f1db3796deae79b",
 "assets/Assets/Images/dog.jpg": "a692f012d5e34b53677bebce45526e66",
 "assets/Assets/Images/done.png": "d67ce2b656bbc340c16fd27ab19ede11",
+"assets/Assets/Images/google_logo.png": "ff629c02385f2f3a199b7e0b3065d077",
 "assets/Assets/Images/man_relax.gif": "b0c6a47f4493823fad8c441ad98b7f34",
 "assets/Assets/Images/past%2520cases.jpeg": "8699ad176ed488ef0c2bbd828c9db2b8",
 "assets/Assets/Images/suitcase.png": "8fa7348e0ae642635f764813f7a5089c",
@@ -30,9 +32,9 @@ const RESOURCES = {
 "icons/Icon-512.png": "96e752610906ba2a93c65f8abe1645f1",
 "icons/Icon-maskable-192.png": "c457ef57daa1d16f64b27b786ec2ea3c",
 "icons/Icon-maskable-512.png": "301a7604d45b3e739efc881eb04896ea",
-"index.html": "97d01a0868ce5a503dc8b38af02552ac",
-"/": "97d01a0868ce5a503dc8b38af02552ac",
-"main.dart.js": "72d14d0554417175081a1a3d2cf0cdc1",
+"index.html": "8547cdbedae10ff00fd7dd829ee9a828",
+"/": "8547cdbedae10ff00fd7dd829ee9a828",
+"main.dart.js": "09ced33e3183d9d40a4f6e7c7e4b5561",
 "manifest.json": "68f34a8de4df3a80a6ea572278fd0510",
 "version.json": "8f3697787be6b9fccd8d4c83f83feef3"
 };
