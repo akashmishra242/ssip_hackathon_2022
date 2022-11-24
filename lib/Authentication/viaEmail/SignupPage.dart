@@ -208,10 +208,9 @@ class _RegistrationStateState extends State<RegistrationState> {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: <Widget>[
                     SizedBox(
-                        height: 180,
-                        child: Image.network(
-                          "https://previews.123rf.com/images/3xy/3xy2001/3xy200100002/139226140-lady-justice-themis-with-sword-and-scales-fair-trial-law-femida-blindfolded-lady-logo-or-label-for-l.jpg",
-                        )),
+                      height: 180,
+                      child: Image.asset("Assets/Images/app_logo.png"),
+                    ),
                     const SizedBox(height: 45),
                     firstNameField,
                     const SizedBox(height: 20),

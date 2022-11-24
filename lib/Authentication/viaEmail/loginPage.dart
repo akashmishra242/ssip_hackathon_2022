@@ -137,8 +137,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     children: <Widget>[
                       SizedBox(
                         height: 200,
-                        child: Image.network(
-                            "https://previews.123rf.com/images/3xy/3xy2001/3xy200100002/139226140-lady-justice-themis-with-sword-and-scales-fair-trial-law-femida-blindfolded-lady-logo-or-label-for-l.jpg"),
+                        child: Image.asset("Assets/Images/app_logo.png"),
                       ),
                       const SizedBox(height: 45),
                       emailField,
@@ -186,8 +185,8 @@ class _LoginScreenState extends State<LoginScreen> {
                                 color: Colors.black,
                                 fontWeight: FontWeight.bold),
                           ),
-                          icon: Image.network(
-                            "https://www.freepnglogos.com/uploads/google-logo-png/google-logo-png-suite-everything-you-need-know-about-google-newest-0.png",
+                          icon: Image.asset(
+                            "Assets/Images/google_logo.png",
                             height: 32,
                             width: 32,
                           ),
