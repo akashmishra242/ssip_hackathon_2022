@@ -47,6 +47,7 @@ migrate_working_dir/
 /build/google_maps_flutter_android
 /build/c075001b96339384a97db4862b8ab8db.cache.dill.track.dill
 /build/cf81dbb7dee963bedb1148fc66e70128.cache.dill.track.dill
+/build/google_sign_in_android
 # Web related
 
 # Symbolication related
