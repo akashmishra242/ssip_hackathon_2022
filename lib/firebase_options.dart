@@ -27,10 +27,11 @@ class DefaultFirebaseOptions {
       case TargetPlatform.macOS:
         return macos;
       case TargetPlatform.windows:
-        throw UnsupportedError(
-          'DefaultFirebaseOptions have not been configured for windows - '
-          'you can reconfigure this by running the FlutterFire CLI again.',
-        );
+        return windows;
+      // throw UnsupportedError(
+      //   'DefaultFirebaseOptions have not been configured for windows - '
+      //   'you can reconfigure this by running the FlutterFire CLI again.',
+      // );
       case TargetPlatform.linux:
         throw UnsupportedError(
           'DefaultFirebaseOptions have not been configured for linux - '
@@ -67,7 +68,8 @@ class DefaultFirebaseOptions {
     messagingSenderId: '93548267324',
     projectId: 'ssip-hackathon2022',
     storageBucket: 'ssip-hackathon2022.appspot.com',
-    iosClientId: '93548267324-emihsmcbvgtcj5499cs5me7so37ua61b.apps.googleusercontent.com',
+    iosClientId:
+        '93548267324-emihsmcbvgtcj5499cs5me7so37ua61b.apps.googleusercontent.com',
     iosBundleId: 'net.codeveer.ssipHackathon2022',
   );
 
@@ -77,7 +79,16 @@ class DefaultFirebaseOptions {
     messagingSenderId: '93548267324',
     projectId: 'ssip-hackathon2022',
     storageBucket: 'ssip-hackathon2022.appspot.com',
-    iosClientId: '93548267324-emihsmcbvgtcj5499cs5me7so37ua61b.apps.googleusercontent.com',
+    iosClientId:
+        '93548267324-emihsmcbvgtcj5499cs5me7so37ua61b.apps.googleusercontent.com',
     iosBundleId: 'net.codeveer.ssipHackathon2022',
+  );
+
+  static const FirebaseOptions windows = FirebaseOptions(
+    apiKey: 'AIzaSyBO5jDtig1l-ygKcPMTpBCdhlM0540Q0vg',
+    appId: '1:93548267324:android:20bed5b45fc529d1c60039',
+    messagingSenderId: '93548267324',
+    projectId: 'ssip-hackathon2022',
+    storageBucket: 'ssip-hackathon2022.appspot.com',
   );
 }

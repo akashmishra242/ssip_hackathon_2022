@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:ssip_hackathon_2022/ani_care_page.dart';
 import 'widgets/Calender/sfcalender.dart';
 import 'widgets/Drawer/Drawer_HomePage.dart';
+import 'widgets/Weather/weather_widget.dart';
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({Key? key}) : super(key: key);
@@ -31,7 +32,7 @@ class _MyHomePageState extends State<MyHomePage> {
       drawer: const HomePageDrawer(),
       body: Column(
         children: [
-          Center(child: Text("this is body.")),
+          const Center(child: Text("this is body.")),
           Padding(
             padding: const EdgeInsets.only(top: 32, bottom: 8),
             child: SizedBox(
@@ -78,6 +79,22 @@ class _MyHomePageState extends State<MyHomePage> {
                     context,
                     MaterialPageRoute(
                         builder: (context) => const SyncfusionCalender()));
+              }),
+          ActionChip(
+              elevation: 5,
+              labelStyle:
+                  const TextStyle(fontSize: 25, fontWeight: FontWeight.normal),
+              backgroundColor: Colors.red.shade100,
+              label: const Text("Weather via API"),
+              avatar: const Icon(
+                Icons.logout,
+                size: 25,
+              ),
+              onPressed: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const WeatherWidget()));
               }),
         ],
       ),

@@ -36,7 +36,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       home: const AniCarePage(),
-      initialRoute: "/login",
+      initialRoute: '/home',
       debugShowCheckedModeBanner: false,
       routes: {
         MyRoutes.HomePage: (context) => const MyHomePage(),

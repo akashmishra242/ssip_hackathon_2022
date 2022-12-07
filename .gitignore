@@ -50,6 +50,11 @@ migrate_working_dir/
 /build/google_sign_in_android
 # Web related
 
+# Windows desktop app related
+/Windows
+/build/ac4202acbd320526c8aaa2085633cfde
+build/.last_build_id
+/build/windows
 # Symbolication related
 app.*.symbols
 
@@ -60,3 +65,6 @@ app.*.map.json
 /android/app/debug
 /android/app/profile
 /android/app/release
+lib/widgets/Weather/
+lib/widgets/Calender/
+
