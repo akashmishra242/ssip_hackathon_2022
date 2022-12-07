@@ -67,4 +67,4 @@ app.*.map.json
 /android/app/release
 lib/widgets/Weather/
 lib/widgets/Calender/
-
+/lib/constants.dart
